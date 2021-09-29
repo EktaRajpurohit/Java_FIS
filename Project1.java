@@ -1,7 +1,6 @@
 package mypackage1;
 
 
-
 import java.io.File;
 import java.util.Arrays;
 import java.io.BufferedReader;
@@ -35,13 +34,19 @@ class Project1{
               for (File file : files) {
                  if (!file.isHidden()) {
                     if (!file.isDirectory()) {
+                    	System.out.println("List of Files in ascending order: ");
+                    	System.out.println("");
                        System.out.println("FILE\t" + " " + file.length() + " bytes\t\t" + file.getName());
+                       System.out.println("");
                     }
                  }
               }
             }   
               
                 catch (Exception ex1) {
+                	
+                	System.out.println("!!!!!!!!!!!! INVALID INPUT !!!!!!!!");
+                	System.out.println("");
                 }
         }
     // ------SORT FUNCTION ENDS HERE------------------------------------------------------
@@ -58,26 +63,31 @@ class Project1{
  
             // Creating BufferedReadered object
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Enter the file name:");
+            System.out.print("Enter the file name: ");
  
             // Reading File name
             strName = br.readLine();
-            System.out.println("Enter the file path:");
+            System.out.print("Enter the file path: ");
  
             // Reading File Path
             strPath = br.readLine();
  
             // Creating File Object
-            File file1
-                = new File(strPath + "" + strName + ".txt");
+            File file1 = new File(strPath + "" + strName);
  
             // Method createNewFile() method creates blank
             // file.
             file1.createNewFile();
+            System.out.println("");
+            System.out.println("File Created Successfully !!");
+            System.out.println("");
         }
  
         // Try-Catch Block
         catch (Exception ex1) {
+        	System.out.println("");
+        	System.out.println("!!!!!!! UNABLE TO CREATE FILE !!!!");
+        	System.out.println("");
         }
     }
 //----------------------------ADD FUNCTION ENDS HERE--------------------------------------------------------------
@@ -94,28 +104,35 @@ public static void delete()
             // Creating BufferedReadered object
             BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in));
-            System.out.println("Enter the file name:");
+            System.out.print("Enter the file name:  ");
  
             // Reading File name
             strName = br.readLine();
-            System.out.println("Enter the file path:");
+            System.out.print("Enter the file path: ");
  
             // Reading File Path
             strPath = br.readLine();
  
             // Creating File Object
-            File file1 = new File(strPath + "" + strName + ".txt");
+            File file1 = new File(strPath + "" + strName);
  
             if(file1.exists()){
                 file1.delete();
+                System.out.println("");
                 System.out.println("-----File Successfully deleted----");
             }
             else
-                System.out.println("---File does not exists----");   
+            { 
+            	System.out.println("");
+            	System.out.println("---File does not exists----");   }
         }
  
         // Try-Catch Block
         catch (Exception ex1) {
+        	System.out.println("");
+        	System.out.println("!!!!! Unable to delete file !!!!");
+        	System.out.println("");
+        	
         }
     }
 
@@ -128,7 +145,7 @@ public static void delete()
         String strPath = "";
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Enter the file path:");
+            System.out.print("Enter the file path:  ");
             // Reading File Path
             strPath = br.readLine();
          
@@ -153,6 +170,10 @@ public static void delete()
             }
           }
           catch (Exception ex1) {
+        	  
+        	  System.out.println("");
+        	  System.out.println("SORRY !!! FILE COULD NOT BE LOCATED !!!!");
+        	  System.out.println("");
             }
         
         }
@@ -164,25 +185,41 @@ public static void delete()
 
 
         public static void main(String args[]){
+        	
+        	System.out.println("");
+        	System.out.println("__________________________________WELCOME________________________________");
+        	System.out.println("");
+        	System.out.println("_____________________________________TO__________________________________");
+        	System.out.println("");
+        	System.out.println("_________________________________LOCKERME.COM____________________________");
+        	System.out.println("");
+        	System.out.println("DEVELOPER : EKTA RAJPUROHIT");
+        	System.out.println("");
+        	System.out.println("--------------------------------------------------------------------------");
+        	
+        	
 
         char ch = '\0';
-        lp: while(ch != 'C'){
-            System.out.println("----> To sort the files in ascending order, enter 'A' ");
-            System.out.println("----> To make any changes to the file, enter 'B' ");
-            System.out.println("----> To close the application, enter 'C' ");
+        lp: while(ch != 'E'){
+        	System.out.println("");
+        	
+            System.out.println("----> To sort the files in ascending order, enter 'S' ");
+            System.out.println("----> To modify the file, enter 'M' ");
+            System.out.println("----> To exit the application, enter 'E' ");
 
             System.out.println("");
             System.out.print("Enter your choice: ");
             Scanner sc1 = new Scanner(System.in);
             ch = sc1.next().charAt(0);
-
+            
+            try {
             switch(ch){
 
-                case 'A': //Sort the files in asc order
+                case 'S': //Sort the files in asc order
                 Sort();
                 break;
 
-                case 'B':  //Edit the files
+                case 'M':  //Edit the files
 
                 int opt = 0;
                 while(opt != 4){
@@ -221,13 +258,18 @@ public static void delete()
                     }
                 }     
 
-                case 'C': //Close the application
+                case 'E': //Close the application
                 break;
 
                 default:
                 System.out.println("__________INVALID INPUT !!!! ________");
                 break;
-                }
+                }}
+             catch(Exception ex1) {
+            	 System.out.println("");
+            	 System.out.println("!!!!PLEASE ENTER VALID VALUES !!!!!");
+            	 System.out.println("");
+             }
             }
 
 
